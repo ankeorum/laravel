@@ -11,7 +11,7 @@
 		@forelse($portfolio as $portfolioitem)
 			<li>{{ $portfolioitem['title'] }}</li>
 		@empty
-			<li>No hay proyectos para mostrar</li>
+			<li>No hay proyectos</li>
 		@endforelse
 	</ul>
 
