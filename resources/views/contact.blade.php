@@ -5,7 +5,7 @@
 @section('content')
 
 	<h1>{{__('Contact')}}</h1>
-	<form method="post" action="{{ route('contact')}}">
+	<form method="post" action="{{ route('messages.store')}}">
 		@csrf
 		<input placeholder="Name" name="name" value="{{ old('name') }}"><br>
 		{!! $errors->first('name', '<small>:message</small><br>') !!}

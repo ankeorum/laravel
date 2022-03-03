@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\MessageController;
 
 //App::setlocale('es');
 
@@ -23,9 +23,14 @@ Route::get('/',HomeController::class)->name('home');
 Route::view('/about','about')->name('about');
 Route::view('/contact','contact')->name('contact');
 
-Route::post('contact', [MessagesController::class, 'store']);
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
-Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::post('contact', [MessageController::class, 'store'])->name('messages.store');
+
+Route::get('/portfolio', [ProjectController::class, 'index'])->name('projects.index');
+Route::post('/portfolio', [ProjectController::class, 'store'])->name('projects.store');
+
+Route::get('/portfolio/create', [ProjectController::class, 'create'])->name('projects.create');
+Route::get('/portfolio/{project}', [ProjectController::class, 'show'])->name('projects.show');
+
 
 // Route::apiresource('projects',PortfolioController::class);
 // Route::get('/', function () {

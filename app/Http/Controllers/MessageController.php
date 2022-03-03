@@ -6,7 +6,7 @@ use App\Mail\MessageReceived;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     public function store(Request $request)
     {
@@ -21,8 +21,9 @@ class MessagesController extends Controller
 
         //Enviar email
 
-        // Mail::to('ankeorum@gmail.com')->queue(new MessageReceived($msg));
+        //Mail::to('ankeorum@gmail.com')->queue(new MessageReceived($msg));
 
-        return (new MessageReceived($msg));
+        return (new MessageReceived($msg)
+    );
     }
 }
