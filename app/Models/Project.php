@@ -13,7 +13,7 @@ class Project extends Model
     //+++++++++++++++++++++++//
 
     //List of fields which will be inserted on this table when an insert is commited
-    //protected $fillable = ['title', 'url', 'description'];
+    protected $fillable = ['title', 'url', 'description'];
 
     //List of fields which will NOT be inserted on this table when an insert is commited
     //protected $guarded = ['id', 'created_at', 'updated_at'];
