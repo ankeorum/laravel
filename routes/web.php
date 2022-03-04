@@ -22,12 +22,10 @@ use App\Http\Controllers\MessageController;
 Route::get('/',HomeController::class)->name('home');
 Route::view('/about','about')->name('about');
 
-Route::get('/portfolio', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/portfolio/create', [ProjectController::class, 'create'])->name('projects.create');
-Route::get('/portfolio/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-Route::patch('/portfolio/{project}', [ProjectController::class, 'update'])->name('projects.update');
-Route::post('/portfolio', [ProjectController::class, 'store'])->name('projects.store');
-Route::get('/portfolio/{project}', [ProjectController::class, 'show'])->name('projects.show');
+
+Route::resource('portfolio', ProjectController::class)
+    ->names('projects')
+    ->parameters(['portfolio' => 'project']);
 
 Route::view('/contact','contact')->name('contact');
 Route::post('contact', [MessageController::class, 'store'])->name('messages.store');
