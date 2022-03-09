@@ -5,13 +5,15 @@
 @section('content')
 
 	<h1>{{ $project->title }}</h1>
-	{{-- <h2>{{ $project }}</h2> --}}
-	{{-- NO FUNCIONA --}}
-	<a href="{{ route('projects.edit', $project) }}">Edit</a>
-	<form method="POST" action="{{ route('projects.destroy', $project) }}">
-		@csrf @method('DELETE')
-		<button>Remove</button>
-	</form>
+
+	@auth
+		<a href="{{ route('projects.edit', $project) }}">Edit</a>
+
+		<form method="POST" action="{{ route('projects.destroy', $project) }}">
+			@csrf @method('DELETE')
+			<button>Remove</button>
+		</form>
+	@endauth
 	<p>{{ $project->description }}</p>
 	<p>{{ $project->created_at->diffforhumans() }}</p>
 	<br>

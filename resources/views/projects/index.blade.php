@@ -6,7 +6,9 @@
 
 	<h1>Portfolio</h1>
 
-	<a href="{{ route('projects.create') }}">Create new project</a>
+	@auth
+		<a href="{{ route('projects.create') }}">Create new project</a>
+	@endauth
 
 	<ul>
 

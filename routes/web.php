@@ -19,7 +19,7 @@ use App\Http\Controllers\MessageController;
 */
 
 //Route::view('/', 'home')->name('home');
-Route::get('/',HomeController::class)->name('home');
+Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
 
 
@@ -35,3 +35,4 @@ Route::post('contact', [MessageController::class, 'store'])->name('messages.stor
 //     $nombre = "Gonzalo";
 //     return view('home', compact('nombre'));
 // })->name('home');
+Auth::routes(['register' => false]);

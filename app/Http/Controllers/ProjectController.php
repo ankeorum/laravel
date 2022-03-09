@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        //This method allows a route for auth users
+        $this->middleware('auth')->only('create', 'edit', 'destroy');
+        //This methos allows routes for non-auth users
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +52,7 @@ class ProjectController extends Controller
         //Project::create( request()->only('title', 'url', 'description') ); // USE THIS OPTION ONLY TO INSERT THE FIELDS YOU STATE
         Project::create( $request->validated() );
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'New project created successfully');
     }
 
     public function edit(Project $project)
@@ -64,12 +71,12 @@ class ProjectController extends Controller
         //Project::create( request()->only('title', 'url', 'description') ); // USE THIS OPTION ONLY TO INSERT THE FIELDS YOU STATE
         // Project::create( $request->validated() );
 
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('status', 'Project updated successfully');
     }
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'Project removed successfully');;
     }
 }

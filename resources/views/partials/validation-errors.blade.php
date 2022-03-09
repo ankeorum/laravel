@@ -1,8 +1,8 @@
 @if ($errors->any())
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
+	<ul>
+		@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+	</ul>
 
-	@endif
+@endif
