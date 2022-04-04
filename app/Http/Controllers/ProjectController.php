@@ -64,7 +64,7 @@ class ProjectController extends Controller
         $this->authorize('create', $project = new Project); //AuthServiceProvider.php allows or not depending on the rules defined there
 
         $project = New Project ( $request->validated() );
-        $project->image = $request->file('image')->store('images');
+        //$project->image = $request->file('image')->store('images');
         $project->save();
 
         // ProjectSaved event
@@ -93,7 +93,7 @@ class ProjectController extends Controller
         {
             Storage::delete($project->image);
             $project = $project->fill( $request->validated() );
-            $project->image = $request->file('image')->store('images');
+            //$project->image = $request->file('image')->store('images');
             $project->save();
 
             // ProjectSaved event
@@ -134,7 +134,7 @@ class ProjectController extends Controller
         $this->authorize('forceDelete', $project);
 
 
-        Storage::delete($project->image);
+        //Storage::delete($project->image);
         $project->forceDelete();
 
         return redirect()->route('projects.index')->with('status', 'Project removed permanently');

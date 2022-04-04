@@ -6,10 +6,6 @@
 	alt="{{ $project->title }}"
 >
 @endif
-<div class="mb-3">
-  <label for="formFile" class="form-label">Upload image</label>
-  <input name="image" class="form-control" type="file" id="formFile">
-</div>
 
 <div class="form-group">
 	<label for="category_id">Project group</label>
