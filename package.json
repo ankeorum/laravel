@@ -24,5 +24,14 @@
         "vue": "^2.6.12",
         "vue-loader": "^15.9.7",
         "vue-template-compiler": "^2.6.12"
-    }
+    },
+    "dependencies": {
+        "yarn": "^1.22.17"
+    },
+    "name": "laravel",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:ankeorum/laravel.git",
+    "author": "ankeorum <48059874+ankeorum@users.noreply.github.com>",
+    "license": "MIT"
 }

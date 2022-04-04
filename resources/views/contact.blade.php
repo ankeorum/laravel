@@ -10,6 +10,7 @@
 			<form class="bg-white shadow rounded py-3 px-4" method="post" action="{{ route('messages.store')}}">
 				@csrf
 				<h1 class="display-4">{{__('Contact')}}</h1>
+				<hr>
 				<div class="form-group">
 					<label for="name">Name</label>
 					<input class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"

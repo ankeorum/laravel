@@ -3,20 +3,43 @@
 @section('title', 'Portfolio - ' . $project->title)
 
 @section('content')
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-sm-10 col-lg-8 mx-auto bg-white p-5 shadow rounded">
+			@if ($project->image)
+				<img class="card-img-top"
+					src="/storage/{{ $project->image }}"
+					alt="{{ $project->title }}"
+				>
+			@endif
+			<div class="bg-white p-5 shadow rounded">
+				<h1>{{ $project->title }}</h1>
+				@if($project->category_id)
+					<a href="{{ route('categories.show', $project->category) }}"
+						class="badge badge-secondary btn-secondary">{{ $project->category->name }}</a>
+				@endif
+				<p class="text-secondary">{{ $project->description }}</p>
+				<p class="text-black-50">{{ $project->created_at->diffforhumans() }}</p>
+				<br>
+				<div class="d-flex justify-content-between align-items-center">
+					@auth
+						<div class="btn-group btn-group-sm">
+							@can('update', $project)
+								<a class="btn btn-primary" href="{{ route('projects.edit', $project) }}">Edit</a>
+							@endcan
+							@can('delete', $project)
+								<a class="btn btn-danger" href="#" onclick="document.getElementById('delete-project').submit()">Delete</a>
 
-	<h1>{{ $project->title }}</h1>
-
-	@auth
-		<a href="{{ route('projects.edit', $project) }}">Edit</a>
-
-		<form method="POST" action="{{ route('projects.destroy', $project) }}">
-			@csrf @method('DELETE')
-			<button>Remove</button>
-		</form>
-	@endauth
-	<p>{{ $project->description }}</p>
-	<p>{{ $project->created_at->diffforhumans() }}</p>
-	<br>
-	<a href="{{ route('projects.index') }}">List of projects</a>
-
+								<form id="delete-project" class="d-none" method="POST" action="{{ route('projects.destroy', $project) }}">
+									@csrf @method('DELETE')
+								</form>
+							@endcan
+						</div>
+					@endauth
+					<a class="btn btn-large btn-block btn-outline-primary" href="{{ route('projects.index') }}">List of projects</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
